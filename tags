@@ -1,0 +1,122 @@
+.PHONY	makefile	/^.PHONY:clean$/
+Mmain	main.c	/^int main()$/
+Mmakefile	makefile	/^main:main.c menu.c add_node.c stu_readfile.c t_rea/
+Mt_readfile	t_readfile.c	/^void main()$/
+W	stuMIS	117
+_ADDSTU_	menu.c	42
+_ADDSTU_	menu.c	297
+_ADDT_	menu.c	418
+_CHANGEPASSWD_	menu.c	218
+_CHANGESCORE_	menu.c	46
+_COMMENT_	menu.c	12
+_DELSTU_	menu.c	43
+_DELSTU_	menu.c	298
+_DELT_	menu.c	419
+_DISPLAYALLSTU_	menu.c	523
+_DISPLAYALLT_	menu.c	524
+_DISPLAYCLASS_	menu.c	302
+_EDITMYINFO_	menu.c	555
+_MODIFYSTUINFO_	menu.c	301
+_MODIFYT_	menu.c	422
+_MYINFO_	menu.c	554
+_MYSTU_	menu.c	587
+_OUT_	menu.c	13
+_ROOTLOGIN_	menu.c	625
+_SEARCHBYID_	menu.c	44
+_SEARCHBYID_	menu.c	420
+_SEARCHBYNAME_	menu.c	421
+_SEARCHSTUBYID_	menu.c	299
+_SEARCHSTUBYNAME_	menu.c	300
+_SORTBYC_	menu.c	45
+_STUCHANGEPASSWD_	menu.c	154
+_STULOGIN_	menu.c	623
+_TEDITINFO_	menu.c	586
+_TINFO_	menu.c	585
+_TLOGIN_	menu.c	624
+_TMANAGE_	menu.c	262
+add_node	add_node.c	/^stu_node *add_node(stu_node *head)$/
+add_node_new	sortbyscore.c	/^stu_node *add_node_new(stu_node *head_new,stu_node/
+age	student.h	8
+change_passwd	change_passwd.c	/^stu_node *change_passwd(stu_node *head,int id)$/
+change_score	change_score.c	/^stu_node *change_score(stu_node *head)$/
+change_stufile	change_tfile.c	/^stu_node *change_stufile(stu_node *head)$/
+change_tfile	change_tfile.c	/^t_node *change_tfile(t_node *head)$/
+check_password	checkpasswd.c	/^stu_node *check_password(stu_node *head,char *name/
+clang	student.h	11
+clean	makefile	/^clean:$/
+csort	clangsort.c	/^stu_node *csort(stu_node *head,int pos)$/
+del_all	menu.c~	/^void del_all()$/
+del_max_node	sortbyscore.c	/^stu_node *del_max_node(stu_node *head,stu_node *ma/
+del_node	del_node.c	/^stu_node *del_node(stu_node *head,int key)$/
+edit_myinfo	menu.c	/^void edit_myinfo(stu_node *head,stu_node *pass)$/
+edit_myinfo	menu.c~	/^void edit_myinfo()$/
+edit_post	menu.c~	/^void edit_post()$/
+file2node	stu_readfile.c	/^stu_node *file2node(FILE *fp)$/
+find_node	find_node_byid.c	/^stu_node *find_node(stu_node *head,int id)$/
+find_node_byclass	find_node_byclass.c	/^stu_node *find_node_byclass(stu_node *head,int cla/
+find_node_byname	find_node_byname.c	/^stu_node *find_node_byname(stu_node *head,char *na/
+get_max_node	sortbyscore.c	/^stu_node *get_max_node(stu_node *head)$/
+id	student.h	5
+id	teacher.h	5
+in_class	student.h	9
+math	student.h	10
+menu	menu.c	/^void menu()$/
+menu	menu.c~	/^void menu()$/
+mingci	student.h	13
+my_info	menu.c	/^void my_info(stu_node *pass)$/
+my_info	menu.c~	/^void my_info()$/
+my_stu	menu.c	/^void my_stu(t_node *t_head,t_node *t_pass,stu_node/
+my_stu	menu.c~	/^void my_stu()$/
+name	student.h	6
+name	teacher.h	6
+next	student.h	14
+next	teacher.h	9
+pass_check	menu.c	/^pass_check()$/
+pass_check	menu.c~	/^pass_check()$/
+passwd	student.h	7
+passwd	teacher.h	7
+post	menu.c~	/^void post()$/
+pre	student.h	14
+pre	teacher.h	9
+print_get	menu.c	/^char print_get()$/
+print_get	menu.c~	/^char print_get()$/
+print_link	stu_readfile.c	/^void print_link(stu_node *head)$/
+print_star	menu.c	/^void print_star()$/
+print_star	menu.c~	/^void print_star()$/
+readhead2file	readhead2file.c	/^void readhead2file(stu_node *head)$/
+root_menu	menu.c	/^void root_menu(stu_node *head,t_node *t_head)$/
+root_menu	menu.c~	/^void root_menu()$/
+stu_add_node	stu_add_node.c	/^stu_node *stu_add_node(stu_node *head)$/
+stu_all	menu.c	/^void stu_all(stu_node *head,t_node *t_head)$/
+stu_all	menu.c~	/^void stu_all()$/
+stu_main	stu_readfile.c	/^void stu_main()$/
+stu_menu	menu.c	/^void stu_menu(stu_node *head,stu_node *pass)$/
+stu_menu	menu.c~	/^void stu_menu()$/
+stu_modify	menu.c	/^void stu_modify(t_node *t_head,t_node *t_pass,stu_/
+stu_modify	menu.c~	/^void stu_modify()$/
+stu_modify	readme	/^		完成第四级菜单stu_modify()$/
+stu_node	student.h	15
+stu_sort_link	sortbyscore.c	/^stu_node *stu_sort_link(stu_node *head)$/
+student	student.h	3
+t_add_node	t_add_node.c	/^t_node *t_add_node(t_node *head)$/
+t_all	menu.c	/^void t_all(t_node *t_head)$/
+t_all	menu.c~	/^void t_all()$/
+t_change_passwd	change_passwd.c	/^t_node *t_change_passwd(t_node *head,int id)$/
+t_check_password	checkpasswd.c	/^t_node *t_check_password(t_node *head,char *name,c/
+t_class	teacher.h	8
+t_del_node	t_del_node.c	/^t_node *t_del_node(t_node *head,int key)$/
+t_editmyinfo	menu.c	/^void t_editmyinfo(t_node *t_head,t_node *t_pass)$/
+t_editmyinfo	menu.c~	/^void t_editmyinfo()$/
+t_file2node	t_readfile.c	/^t_node *t_file2node(FILE *fp)$/
+t_find_node	find_node_byid.c	/^t_node *t_find_node(t_node *head,int id)$/
+t_find_node_byname	find_node_byname.c	/^t_node *t_find_node_byname(t_node *head,char *name/
+t_findnode_byclass	t_find_node_byclass.c	/^t_node *t_findnode_byclass(t_node *head,int clas)$/
+t_menu	menu.c	/^void t_menu(t_node *t_head,t_node *t_pass,stu_node/
+t_menu	menu.c~	/^void t_menu()$/
+t_myinfo	menu.c	/^void t_myinfo(t_node *t_pass)$/
+t_myinfo	menu.c~	/^void t_myinfo()$/
+t_node	teacher.h	10
+t_print_link	t_readfile.c	/^void t_print_link(t_node *head)$/
+t_readhead2file	readhead2file.c	/^void t_readhead2file(t_node *head)$/
+teacher	teacher.h	3
+yuwen	student.h	12

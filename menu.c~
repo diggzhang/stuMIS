@@ -1,0 +1,582 @@
+/******************************************
+功能：主屏图形输出
+创建日期：20130810
+版本:1.0
+******************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "student.h"
+#include "teacher.h"
+//获取字符函数
+char print_get()
+{
+	char ch;
+	printf("\n\n\n");
+
+	printf("选择：");
+	ch = getchar();
+	getchar();
+	
+	return ch;
+}
+
+void print_star()
+{
+	printf("*****************************************************\n");
+}
+
+pass_check()
+{
+	system("clear");
+	print_star();
+	printf("\t\t请输入用户名/密码\n");
+	printf("\t\t默认 name:admin password:admin\n");
+	print_star();
+
+}
+//stu modify 444
+void stu_modify()
+{
+	while(1)
+	{
+		system("clear");
+
+		print_star();
+		printf("\t\t1)添加学生\n");
+		printf("\t\t2)删除学生\n");
+		printf("\t\t3)按ID查找\n");
+		printf("\t\t4)总成绩排名\n");
+		printf("\t\t5)修改成绩\n");
+		printf("\t\t0)返回上一级\n");
+		print_star();
+
+		stu_node *head = NULL;
+		stu_node *new = NULL;
+		stu_node *p=NULL;
+		FILE *fp;
+		fp=fopen("stufile.data","r");
+		head = file2node(fp);
+		printf("学号\t姓名\t年龄\t班级\t数学\tC语言\t语文\t排名 \n");
+		print_link(head);
+
+		char ch;
+		int id;
+		ch=print_get();
+		switch(ch)
+		{
+			case '1':
+				printf(">>请输入添加学生信息\n");
+				new = stu_add_node(head);
+				break;
+			case '2':
+				printf(">>请输入删除学生的IDi\n");
+				printf(">>");
+				scanf("%d",&id);
+				del_node(head,id);
+				printf(">>删除成功<<");
+				getchar();
+				break;
+			case '3':
+				printf(">>请输入查找学生的ID\n");
+				printf(">>");
+				scanf("%d",&id);
+				p=find_node(head,id);
+				if(p == NULL)
+				{
+					printf("没有发现查询信息\n");
+				}
+				else
+				{
+					printf("学号：%d 姓名：%s \n",p->id,p->name);
+				}
+				getchar();
+				break;
+			case '4':
+				stu_sort_link(head);
+				printf("学号\t姓名\t年龄\t班级\t数学\tC语言\t语文\t排名 \n");
+				print_link(head);
+				getchar();
+				break;
+			case '0':
+				return;
+		}
+	}
+}
+
+//stu 333
+void my_info()
+{
+	while(1)
+	{
+		system("clear");
+		char ch;
+		print_star();
+		printf("\t\t我的个人信息\n");
+		printf("\t\t按'0'返回\n");
+		print_star();
+
+		printf("学号\t姓名\t年龄\t班级\t数学\tC语言\t语文\t排名 \n");
+	
+		ch=print_get();
+		if(ch == '0')
+			return;
+	}
+}
+
+void edit_myinfo()
+{
+	while(1)
+	{
+		system("clear");
+		char ch;
+		print_star();
+		printf("\t\t修改个人信息\n");
+		printf("\t\t个人信息仅仅允许修改 姓名\n");
+		printf("\t\t按'0'返回\n");
+		print_star();
+	
+		printf("学号\t姓名\t年龄\t班级\t数学\tC语言\t语文\t排名 \n");
+
+		ch=print_get();
+		if(ch == '0')
+			return;
+	}
+}
+
+void post()
+{
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("\t\t通知\n");
+		printf("\t\t按'0'退出\n");
+		print_star();
+
+		printf("\t\t校方消息\n");
+
+		char ch;
+		ch=print_get();
+		if(ch == '0')
+			return;
+	}
+}
+//teacher 333
+
+void t_myinfo()
+{
+	while(1)
+	{
+		system("clear");
+		char ch;
+		print_star();	
+		printf("\t\t教师信息\n");
+		printf("\t\tpress '0' return to main menu\n");
+		print_star();	
+	
+		printf("教师号\t姓名\t负责班级\n");
+
+		ch=print_get();
+		if(ch == '0')
+			return;
+	}
+}
+
+void t_editmyinfo()
+{
+	while(1)
+	{
+		system("clear");
+		char ch;
+		print_star();	
+		printf("\t\t修改教师信息\n");
+		printf("\t\tpress '0' return to main menu\n");
+		printf("\t\t仅允许修改 姓名\n");
+		print_star();	
+	
+		printf("教师号\t姓名\t负责班级\n");
+
+		ch=print_get();
+		if(ch == '0')
+			return;
+	}
+}
+
+void my_stu()
+{
+	while(1)
+	{
+		system("clear");
+		char ch;
+		print_star();	
+		printf("\t\t我的学生\n");
+		printf("\t\t按'1'进入修改模式\n");
+		printf("\t\t按'0'返回上一级\n");
+		print_star();	
+
+		stu_node *head = NULL;
+		stu_node *new = NULL;
+		stu_node *p=NULL;
+		FILE *fp;
+		fp=fopen("stufile.data","r");
+		head = file2node(fp);
+		printf("学号\t姓名\t年龄\t班级\t数学\tC语言\t语文\t排名 \n");
+		print_link(head);
+
+		ch=print_get();
+		if(ch == '0')
+			return;
+
+		switch(ch)
+		{
+			case '1':
+				stu_modify();
+				break;
+			case '0':
+				break;
+		}
+	}
+}
+//root333
+
+void stu_all()
+{
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("\t\t全部学生信息\n");
+		printf("\t\t1)添加学生\n");
+		printf("\t\t2)删除学生\n");
+		printf("\t\t3)查找学生\n");
+		printf("\t\tPress '0' return to main menu\n");
+		print_star();
+
+		stu_node *head = NULL;
+		stu_node *new=NULL;
+		stu_node *p=NULL;
+		FILE *fp;
+		fp=fopen("stufile.data","r");
+		head = file2node(fp);
+		printf("学号\t姓名\t年龄\t班级\t数学\tC语言\t语文\t排名 \n");
+		print_link(head);
+
+		char ch;
+		int id;
+		ch=print_get();
+		
+		switch(ch)
+		{	
+			case '1':
+				printf(">>>请输入添加学生信息\n");
+				new = add_node(head);	
+				//printf("学号\t姓名\t年龄\t班级\t数学\tC语言\t语文\t排名 \n");
+				//print_link(new);
+				getchar();
+				break;
+			case '2':
+				printf(">>>请输入删除学生的ID\n");
+				printf(">>>");
+				scanf("%d",&id);
+				del_node(head,id);
+				printf(">>>删除成功<<<\n");
+				getchar();
+				break;
+			case '3':
+				printf(">>>请输入查找学生的ID\n");
+				printf(">>>");
+				scanf("%d",&id);
+				p=find_node(head,id);
+				if(p == NULL)
+				{
+					printf("没有发现查询信息\n");
+				}
+				else
+				{
+					printf("学号：%d 姓名:%s 班级：%d \n",p->id,p->name,p->in_class);	
+				}
+				getchar();
+				break;
+			case '0':
+				return;
+		}
+	
+	}
+}
+void t_all()
+{
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("\t\t全部教师信息\n");
+		printf("\t\t1)添加教师\n");
+		printf("\t\t2)删除教师\n");
+		printf("\t\t3)查找教师\n");
+		printf("\t\tPress '0' return to main menu\n");
+		print_star();
+
+		t_node *head = NULL;
+		t_node *p=NULL;
+		FILE *fp;
+		fp = fopen("t_file.data","r");
+		head = t_file2node(fp);
+		printf("教师号\t姓名\t负责班级\n");
+		t_print_link(head);
+
+		char ch;
+		int id;
+		ch=print_get();
+
+		switch(ch)
+		{
+			case '1':
+				printf(">>>请输入添加教师信息\n");
+				head = t_add_node(head);
+				getchar();
+				break;
+			case '2':
+				printf(">>>请输入删除教师ID\n");
+				printf(">>>");
+				scanf("%d",&id);
+				t_del_node(head,id);
+				printf(">>>删除成功<<<\n");
+				getchar();
+				break;
+			case '3':
+				printf(">>>请输入查找教师的ID\n");
+				printf(">>>");
+				scanf("%d",&id);
+				p=t_find_node(head,id);
+				if(p == NULL)
+				{
+					printf("没有发现查询信息\n");
+				}
+				else
+				{
+					printf("编号：%d 姓名:%s 负责班级：%d \n",p->id,p->name,p->t_class);	
+				}
+				getchar();
+				break;
+			case '0':
+				return;
+
+		}
+	}
+}
+void edit_post()
+{
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("\t\t发放全校通知\n");
+		printf("\t\tPress '0' return to main menu\n");
+		print_star();
+
+		char ch;
+		ch=print_get();
+		if(ch == '0')
+			return;
+	}
+}
+void del_all()
+{
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("\t\t删除校内全部信息，仅供被炒鱿鱼时使用\n");
+		printf("\t\tPress '0' return to main menu\n");
+		print_star();
+
+		char ch;
+		ch=print_get();
+		if(ch == '0')
+			return;
+	}
+}
+
+//管理员 222
+void root_menu()
+{
+	char ch;
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("**		1） 学生管理	**\n");
+		printf("**		2） 教师管理	**\n");
+		printf("**		3） 全校通知	**\n");
+		printf("**		4） 毁灭所有	**\n");
+		printf("**		0） 返回    	**\n");
+		print_star();
+
+		ch=print_get();
+
+		switch(ch)
+		{
+			case '1':
+				stu_all();
+				break;
+			case '2':
+				t_all();
+				break;
+			case '3':
+				edit_post();
+				break;
+			case '4':
+				del_all();
+				break;
+			case '0':
+				return;
+		}
+	}
+}
+//学生 222
+void stu_menu()
+{
+	while(1)
+	{
+		system("clear");
+		char ch;
+		print_star();
+		printf("	1) 我的信息\n");
+		printf("	2) 修改信息\n");
+		printf("	3) 查看通知\n");
+		printf("	0) 返回主菜单\n");
+		print_star();
+		ch=print_get();
+
+		switch(ch)
+		{
+			case '1':
+				my_info();
+				break;
+			case '2':
+				edit_myinfo();
+				break;
+			case '3':
+				post();
+				break;
+			case '0':
+				return;
+		}
+	}
+}
+//教师 222
+void t_menu()
+{
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("	1) 我的信息\n");
+		printf("	2) 修改信息\n");
+		printf("	3) 查看通知\n");
+		printf("	4) 我的学生\n");
+		printf("	0) 返回主菜单\n");
+		print_star();
+
+		char ch;
+		ch=print_get();
+
+		switch(ch)
+		{
+			case '1':
+				t_myinfo();
+				break;
+			case '2':
+				t_editmyinfo();
+				break;
+			case '3':
+				post();
+				break;
+			case '4':
+				my_stu();
+				break;
+			case '0':
+				return;
+		}
+
+	}
+}
+//111
+void menu()
+{
+	int i=0;
+	char na[32];
+	char passwd[62];
+	char ch;
+	while(1)
+	{
+		system("clear");
+		print_star();
+		printf("**\n");
+		printf("**		1) 学生登陆			 	\n");
+		printf("**\n");
+		printf("**		2) 教师登陆		   	 	\n");
+		printf("**\n");
+		printf("**		3) 管理员登陆		 	\n");
+		printf("**\n");
+		printf("**		0) 退出本程序 	 	     \n");
+		print_star();
+		
+		ch='K';
+		ch=print_get();
+
+		switch(ch)
+		{
+			case '1':
+								stu_menu();
+				break;
+			case '2':
+				t_menu();
+				break;
+			case '3':
+				printf("输入用户名：");
+				while(i<3)
+				{
+					scanf("%s",na);
+					getchar();
+					if(!strcmp(na,"admin"))
+						break;
+					i++;
+					printf("第%d次输入用户名：",i+1);
+				}
+				if(i==3)
+				{
+					printf("输错用户名超过3次\n");
+					printf("退出学生管理系统\n");
+				}
+				i=0;
+				printf("输入密码 ：");
+				while(i<3)
+				{
+					scanf("%s",passwd);
+					getchar();
+					if(!strcmp(passwd,"admin"))
+					{
+
+						root_menu();
+						break;
+					}
+					i++;
+					printf("第%d次输入密码：",i+1);
+				}
+				if(i==3)
+				{
+					printf("输错密码超过3次\n");
+					printf("退出学生管理系统\n");
+				}
+
+
+				break;
+			case '0':
+				system("clear");
+				exit(0);
+		}
+	}
+}
